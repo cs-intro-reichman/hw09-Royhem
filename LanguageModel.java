@@ -91,8 +91,9 @@ public class LanguageModel {
         {
             CharData cd = probs.get(i);
             cd.p = (double) cd.count / totalCount; 
-            c += cd.p;               
-            cd.cp = c;               
+            c = c+ cd.p;               
+            cd.cp = c; 
+
         }
     }
 
@@ -109,9 +110,10 @@ public class LanguageModel {
             }
         }
 
+
         return probs.get(probs.getSize() - 1).chr;
 	}
-
+    
     /**
 	 * Generates a random text, based on the probabilities that were learned during training. 
 	 * @param initialText - text to start with. If initialText's last substring of size numberOfLetters
