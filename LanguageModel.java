@@ -127,16 +127,17 @@ public class LanguageModel {
         }
 
         String g = initialText;
-    
-        while (g.length() < textLength) 
+        int total= textLength + initialText.length();
+        while (g.length() < total) 
         {
             String currentWindow = g.substring(g.length() - windowLength);
         
             List probs = CharDataMap.get(currentWindow);
 
-            if (probs == null) {
+            if (probs == null) 
+            {
             break; 
-    }
+            }
         
             char nextChar = getRandomChar(probs);
             g += nextChar;
